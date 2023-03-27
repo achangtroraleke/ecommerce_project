@@ -1,0 +1,26 @@
+<nav>
+    <ul class="no-bullets navigation-bar">
+        <li class="navigation-item"><a href="{% url 'home' %}"><div class="nav-box"> [ Ecommerce ]</div></a> </li>
+        
+        <li class="navigation-item">
+            <a href="#">
+                <div class="nav-box">
+                    <form method="GET" action="{% url 'home' %}">
+                        <title>Search</title>
+                        <input placeholder="Search" name="q">
+
+                    </form>
+                </div>
+            </a> 
+        </li>
+
+        {% if request.user.is_authenticated %}
+        <li class="navigation-item"><a href="{% url 'create-sale' %}"><div class="nav-box">[ Create Sale ]</div></a> </li>
+        <li class="navigation-item"><a href="{% url 'logout' %}"><div class="nav-box">[ Logout :{{request.user}}]</div></a> </li>
+        {% else %}
+        <li class="navigation-item"><a href="{% url 'login' %}"><div class="nav-box">[ Login ]</div></a> </li>
+        <li class="navigation-item"><a href="{% url 'register' %}"><div class="nav-box">[ Register ]</div></a> </li>
+        {% endif %}
+        <li class="navigation-item"><a href="{% url 'cart' %}"><div class="nav-box">[ Cart ]</div></a> </li>
+    </ul>
+</nav>

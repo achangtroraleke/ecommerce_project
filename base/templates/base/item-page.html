@@ -1,0 +1,49 @@
+{% extends 'main.html' %}
+{% block content%}
+<main>
+    <section>
+        <div class="view-box">
+            <div class="view-item">
+                <div class="view-header">
+                    <div class="view-image-box">
+                        <img class='thumbnail-image'src="{{selected_item.picture.url}}">  
+                        <br>
+                        <a href="{% url 'add-item' selected_item.id %}"><button class="button-style button-font">Add to Cart</button></a>
+                    </div>
+                    
+                    <div class="view-info">
+                        <h3>{{selected_item.name|truncatechars_html:25}}</h3>
+                        <h4>${{selected_item.price|floatformat:2}}</h4>
+                        <p>{{selected_item.description}}</p>
+                    </div>
+
+                    <div class="view-cart">
+                        <span>Your Cart:</span>
+                        <hr>
+                        <div class="cart-feed">
+                            {% for item in cart%}
+
+                            <div class="cart-item">
+                                <img src="{{item.picture.url}}">
+                                {{item.name|truncatechars_html:10}} 
+                                <span class="cart-price-sidebar">${{item.price|floatformat:2}}</span>  
+                                
+                            </div>
+                            <hr>
+    
+                            {% endfor %}
+                        </div>
+     
+                    </div>
+                </div>
+            </div>
+            <br>
+            
+        </div>
+    
+    </section>
+
+
+</main>
+
+{% endblock content %}

@@ -1,0 +1,106 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<main>
+    <div id="carousel" class="carousel slide sales-banner">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+
+        <div class="carousel-inner banner-content">
+
+            <div class="carousel-item  active banner announcement">
+                <div class="announcement-box ">
+                    <div class="item-card flex-gap" > 
+                        <h1>SALE!!!</h1>
+                        <h2>Shop our limited time sale.</h2>
+                    </div>
+                </div>
+            
+          
+             
+              </div>
+            
+          <div class="carousel-item  banner">
+            {% for item in saleitems %}
+            <div class="item-box">
+                <div class="item-image flex-gap">
+                    <img src="{{item.picture.url}}" class="d-block thumbnail-image">
+                </div>
+                
+                <div class="item-card flex-gap" >
+                    
+                    <h3>{{item.name}}</h3>
+                    <h4>${{item.price|floatformat:2}}</h4><p>{{item.description}}</p>
+                </div>
+            </div>
+           {% endfor %}
+          </div>
+          
+          <div class="carousel-item  banner">
+            {% for item in saleitems2 %}
+            <div class="item-box">
+                <div class="item-image flex-gap">
+                    <img src="{{item.picture.url}}" class="d-block promoted-image">
+                </div>
+                
+                <div class="item-card flex-gap" >
+                    
+                    <h1>{{item.name}}</h1>
+                    <h4>${{item.price|floatformat:2}}</h4><p>{{item.description}}</p>
+                </div>
+   
+          
+            </div>
+           {% endfor %}
+          </div>
+          
+
+ 
+
+          
+        </div>
+
+
+
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+
+
+
+    <section class="market-feed">
+        {% for item in all_sales %}
+        <a href="{% url 'item-page' item.id %}"><div class="item-box">
+            <div class="item-image ">
+                <img src="{{item.picture.url}}" class="d-block thumbnail-image">
+                
+            </div>
+            
+
+            <div class="item-bottom">
+                <h3 class="item-name">{{item.name|truncatechars_html:13}}</h1>
+                <h4>${{item.price|floatformat:2}}</h4><p>{{item.description}}</p>
+            </div>
+            <a href="{% url 'add-item' item.id %}"><button class="button-style button-font">Add to Cart</button></a>
+        </div>
+        
+        {% endfor %}
+        </a>
+    </section>
+
+</main>
+
+
+
+{% endblock content %}

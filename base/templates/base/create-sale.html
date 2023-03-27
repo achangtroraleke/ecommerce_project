@@ -1,0 +1,27 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<main>
+    <section>
+         <div class="view-box fit-content" >
+    <h4>Post a Sale</h4>
+    <form class="form" action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="form-group">
+                <label for="{{field.label}}">{{field.label}}</label>
+                {{field}}  
+            </div>
+    
+        {% endfor %}
+            <input type="submit" value="Post" class="button-style button-font">
+
+    </form>
+</div>
+    </section>
+
+   
+</main>
+
+
+{% endblock content%}

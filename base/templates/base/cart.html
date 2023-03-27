@@ -1,0 +1,30 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<main>
+    <section>
+        <div class="view-box">
+            <div class="cart-section">
+                <h3>Cart:</h3>
+                {% for item in cart %}
+                <div class="cart-item">
+                        <img src="{{item.picture.url}}">
+                        {{item.name}} 
+                        <span class="price-right">${{item.price|floatformat:2}}</span>  
+                        
+                </div>
+                <hr>
+                {% endfor %}
+            
+            </div>
+            
+            <div class="view-footer">
+                <span class="cart-total">Total: ${{cart_total|floatformat:2}}</span>
+                <a href="{% url 'check-out' %}"><button class="button-style button-font">Check Out</button></a>
+            </div>
+        </div>
+
+    </section>
+</main>
+
+{% endblock content %}

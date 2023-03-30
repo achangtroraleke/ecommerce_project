@@ -33,7 +33,7 @@ nav ul{
 
 main{
     position: absolute;
-    width: 100dvw;
+    width: 100%;
     margin-top:3rem;
 }
 
@@ -65,7 +65,7 @@ section{
    
     background-color: gray;
     height: 20rem;
-    width: 100dvw;
+    width: 100%;
     margin: auto;
 
 
@@ -79,7 +79,7 @@ section{
 
 .item-box{
     display: inline-flex;
-    width: 27rem;
+    width: 21%;
     border-bottom: solid #b9b9b9;
     height: 14rem;
     margin-left: 2.5%;

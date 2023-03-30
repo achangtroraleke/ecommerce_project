@@ -317,3 +317,23 @@ section img{
 
 }
 
+.burger{
+    display: none;
+}
+
+@media (max-width:1800px){
+    .pc-view{
+        display: none;
+    }
+
+    .burger{
+        display: block;
+    }
+    .container-fluid a {
+        color: white;
+    }
+
+
+    
+}
+
